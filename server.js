@@ -3,11 +3,14 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+//const fs = require("fs");
+const { readdirSync } = require("fs");
 require("dotenv").config();
 
-//app
+//import routes
+//const authRoutes = require("./routes/auth");
 
+//app
 const app = express();
 
 //db
@@ -26,12 +29,9 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
-//route
-app.get("/api", (req, res) => {
-  res.json({
-    data: "hey welcome node API",
-  });
-});
+//routes middleware
+//app.use("/api", authRoutes);
+readdirSync("./routes").map((r) => app.use("/api", require("./routes/" + r)));
 
 //port
 const port = process.env.PORT || 5000;
