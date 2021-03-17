@@ -32,7 +32,7 @@ exports.update = async (req, res) => {
     );
     res.json(updated);
   } catch (err) {
-    res.status(400).send("Ctaegory update failed");
+    res.status(400).send("Category update failed");
   }
 };
 
