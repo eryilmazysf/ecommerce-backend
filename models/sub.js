@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-//const { ObjectId } = mongose.Schema;
-const ObjectId = mongoose.Schema.Types.ObjectId;
+const { ObjectId } = mongoose.Schema;
+
 const subSchema = new mongoose.Schema(
   {
     name: {
